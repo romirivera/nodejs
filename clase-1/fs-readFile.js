@@ -1,6 +1,6 @@
 const fs = require('node:fs');
 //const { promisify } = require('node:util'); //promisify es una función que convierte una función de callback en una promesa
-// const readFilePromise = promisify(fs.readFile); y despues abajo continuar como si fuera una promesa
+// const readFilePromise = promisify(fs.readFile); //y despues abajo continuar como si fuera una promesa
 console.log('Leyendo archivo...');
 const text = fs.readFileSync('./archivo.txt', 'utf-8', (err, text) => {
   console.log(text);
