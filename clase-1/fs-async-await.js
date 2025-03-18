@@ -1,4 +1,4 @@
-//asíncrono secuencial
+//asíncrono secuencial, no continúa si no termina el que está ejecutando.
 
 const { readFile } = require('node:fs/promises');
 
