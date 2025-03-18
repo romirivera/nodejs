@@ -11,5 +11,3 @@ fs.readdir('.', (err, files) => {
     console.log(file);
   });
 });
-
-fs.stat;

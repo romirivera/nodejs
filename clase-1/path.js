@@ -6,7 +6,6 @@ const path = require('node:path');
 console.log(path.sep); //muestra barras separadoras de carpetas en el sistema operativo
 
 //unir rutas con path.join
-const pathJoin = history;
 const filePath = path.join('/content', 'subfolder', 'test.txt'); // es distinto segun so
 console.log(filePath); //`/content/subfolder/test.txt`
 
