@@ -1,10 +1,14 @@
 const http = require('node:http');
+const { findAvailablePort } = require('./free-port');
 
+const desiredPort = process.env.PORT ?? 3000; //Si existe la variable de entorno PORT, se usará ese valor.
 const server = http.createServer((req, res) => {
   console.log('request received');
-  res.send('Hola mundo');
+  res.end('Hola mundo');
 });
 
-server.listen(0, () => {
-  console.log(`server listening on port http://localhost:${server.address().port}`);
+findAvailablePort(desiredPort).then((port) => {
+  server.listen(port, () => {
+    console.log(`server listening on port http://localhost:${port}`);
+  });
 });
