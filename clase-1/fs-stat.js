@@ -1,5 +1,6 @@
 const fs = require('node:fs'); //desde 2016 se agreg el prefijo node
 //fs = file system
+//stats es un objeto que contiene información sobre un archivo o directorio.
 const stats = fs.statSync('./archivo.txt'); //hay muchos eventos sincronos y asincronos
 
 console.log(

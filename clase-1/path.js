@@ -1,5 +1,5 @@
 const path = require('node:path');
-//construir nuevas rutas de archivos
+//facilita la manipulación de rutas de archivos y directorios.
 
 //-> unix /
 // -> windows \
