@@ -16,8 +16,10 @@ const processRequest = (req, res) => {
       }
     case 'POST':
       switch (url) {
-        case '/pokemon/ditto':
-          let body= ""
+        case '/pokemon/ditto': {
+          let body = '';
+        }
+      }
   }
 };
 const server = http.createServer(processRequest);
