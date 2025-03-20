@@ -25,11 +25,16 @@ const processRequest = (req, res) => {
           });
 
           req.on('end', () => {
-            const data = JSON.parse(body);
-            //llamar a una base de datos par guardar la info
-            res.writeHead(201, { 'Content-Type': 'application/json; charset=utf-8' });
-            data.timestamp = Date.now;
-            res.end(JSON.toStringfy(data));
+            try {
+              const data = JSON.parse(body);
+              //llamar a una base de datos par guardar la info
+              res.writeHead(201, { 'Content-Type': 'application/json; charset=utf-8' });
+              data.timestamp = Date.now();
+              res.end(JSON.stringify(data));
+            } catch (error) {
+              res.writeHead(400, { 'Content-Type': 'application/json; charset=utf-8' });
+              res.end(JSON.stringify({ error: 'Invalid JSON' }));
+            }
           });
 
           break;
