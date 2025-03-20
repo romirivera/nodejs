@@ -7,7 +7,7 @@ const processRequest = (req, res) => {
     case 'GET':
       switch (url) {
         case '/pokemon/ditto':
-          res.setHeader('Content-Type', 'aplication/json; charset=utf-8');
+          res.setHeader('Content-Type', 'application/json; charset=utf-8');
           return res.end(JSON.stringify(dittoJSON));
         default:
           res.statusCode = 404;
@@ -16,9 +16,28 @@ const processRequest = (req, res) => {
       }
     case 'POST':
       switch (url) {
-        case '/pokemon/ditto': {
+        case '/pokemon': {
           let body = '';
+
+          //escuchar el evento data
+          req.on('data', (chunk) => {
+            body += chunk.toString(); //de binario a string
+          });
+
+          req.on('end', () => {
+            const data = JSON.parse(body);
+            //llamar a una base de datos par guardar la info
+            res.writeHead(201, { 'Content-Type': 'application/json; charset=utf-8' });
+            data.timestamp = Date.now;
+            res.end(JSON.toStringfy(data));
+          });
+
+          break;
         }
+        default:
+          res.statusCode = 404;
+          res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+          return res.end('404 not found');
       }
   }
 };
